@@ -1,0 +1,19 @@
+#!/bin/bash
+
+nmap_scan() {
+    echo "nmap..."
+    nmap $DOMAIN > $DIRECTORY/nmap_result
+    echo "The results of nmap scan are stored in $DIRECTORY/nmap_result."
+}
+
+dirsearch_scan() {
+    echo "dirsearch..."
+    dirsearch -u $DOMAIN -e php -o $DIRECTORY/dirsearch_result
+    echo "The results of dirsearch scan are stored in $DIRECTORY/dirsearch_result"
+}
+
+crt_scan() {
+    echo "crt..."
+    curl "https://crt.sh/?q=$DOMAIN&output=json" -o $DIRECTORY/crt_result
+    echo "The results of crt scan are stored in $DIRECTORY/crt_result"
+}
